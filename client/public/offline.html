@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>غير متصل - Go Umrah</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Tajawal', 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1B5E52 0%, #0d3d35 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+    .container { max-width: 400px; }
+    .icon { font-size: 5rem; margin-bottom: 1.5rem; }
+    h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.75rem; }
+    p { color: rgba(255,255,255,0.8); font-size: 1rem; line-height: 1.6; margin-bottom: 2rem; }
+    button {
+      background: #C9A96E;
+      color: #1B5E52;
+      border: none;
+      padding: 0.75rem 2rem;
+      border-radius: 9999px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    button:hover { opacity: 0.9; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">🕌</div>
+    <h1>لا يوجد اتصال بالإنترنت</h1>
+    <p>يبدو أنك غير متصل بالإنترنت. تحقق من اتصالك وحاول مرة أخرى.</p>
+    <button onclick="window.location.reload()">إعادة المحاولة</button>
+  </div>
+</body>
+</html>
