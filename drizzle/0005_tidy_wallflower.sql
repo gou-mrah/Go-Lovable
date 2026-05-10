@@ -1,0 +1,40 @@
+CREATE TABLE `hajj_booking_requests` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`requestId` varchar(36) NOT NULL,
+	`packageId` varchar(36),
+	`packageTitle` varchar(500),
+	`countryAr` varchar(255),
+	`countryEn` varchar(255),
+	`pilgrims` int DEFAULT 1,
+	`customerName` varchar(255) NOT NULL,
+	`customerPhone` varchar(100),
+	`customerEmail` varchar(255),
+	`customerWhatsapp` varchar(100),
+	`notes` text,
+	`status` enum('new','reviewing','confirmed','cancelled') NOT NULL DEFAULT 'new',
+	`createdAt` timestamp NOT NULL DEFAULT (now()),
+	`updatedAt` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+	CONSTRAINT `hajj_booking_requests_id` PRIMARY KEY(`id`),
+	CONSTRAINT `hajj_booking_requests_requestId_unique` UNIQUE(`requestId`)
+);
+--> statement-breakpoint
+CREATE TABLE `umrah_booking_requests` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`requestId` varchar(36) NOT NULL,
+	`packageId` int,
+	`packageTitle` varchar(500),
+	`portalType` enum('domestic','international') NOT NULL DEFAULT 'domestic',
+	`departureCity` varchar(255),
+	`countryAr` varchar(255),
+	`pilgrims` int DEFAULT 1,
+	`customerName` varchar(255) NOT NULL,
+	`customerPhone` varchar(100),
+	`customerEmail` varchar(255),
+	`customerWhatsapp` varchar(100),
+	`notes` text,
+	`status` enum('new','reviewing','confirmed','cancelled') NOT NULL DEFAULT 'new',
+	`createdAt` timestamp NOT NULL DEFAULT (now()),
+	`updatedAt` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+	CONSTRAINT `umrah_booking_requests_id` PRIMARY KEY(`id`),
+	CONSTRAINT `umrah_booking_requests_requestId_unique` UNIQUE(`requestId`)
+);

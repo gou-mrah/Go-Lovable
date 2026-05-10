@@ -1,0 +1,1 @@
+ALTER TABLE `hajj_programs` ADD `muzdalifaSleeping` varchar(500);

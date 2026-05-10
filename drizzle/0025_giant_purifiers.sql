@@ -1,0 +1,60 @@
+CREATE TABLE `plan_addons` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`slug` varchar(50) NOT NULL,
+	`nameAr` varchar(100) NOT NULL,
+	`nameEn` varchar(100) NOT NULL,
+	`descriptionAr` text,
+	`descriptionEn` text,
+	`monthlyPriceSAR` decimal(10,2) NOT NULL,
+	`maxSlots` int NOT NULL DEFAULT 5,
+	`totalPlatformSlots` int NOT NULL DEFAULT 10,
+	`isActive` boolean NOT NULL DEFAULT true,
+	`createdAt` timestamp NOT NULL DEFAULT (now()),
+	`updatedAt` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+	CONSTRAINT `plan_addons_id` PRIMARY KEY(`id`),
+	CONSTRAINT `plan_addons_slug_unique` UNIQUE(`slug`)
+);
+--> statement-breakpoint
+CREATE TABLE `provider_subscriptions` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`providerId` int NOT NULL,
+	`planId` int NOT NULL,
+	`billingCycle` enum('trial','monthly','annual') NOT NULL DEFAULT 'trial',
+	`status` enum('active','expired','cancelled','pending_payment') NOT NULL DEFAULT 'active',
+	`startDate` timestamp NOT NULL DEFAULT (now()),
+	`endDate` timestamp NOT NULL,
+	`hasFeaturedListings` boolean NOT NULL DEFAULT false,
+	`featuredListingsExpiry` timestamp,
+	`hasHeroAds` boolean NOT NULL DEFAULT false,
+	`heroAdsExpiry` timestamp,
+	`upgradeRequestedPlanId` int,
+	`upgradeRequestedAt` timestamp,
+	`upgradeRequestedAddons` json DEFAULT ('[]'),
+	`adminNotes` text,
+	`activatedBy` int,
+	`createdAt` timestamp NOT NULL DEFAULT (now()),
+	`updatedAt` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+	CONSTRAINT `provider_subscriptions_id` PRIMARY KEY(`id`)
+);
+--> statement-breakpoint
+CREATE TABLE `subscription_plans` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`slug` varchar(50) NOT NULL,
+	`nameAr` varchar(100) NOT NULL,
+	`nameEn` varchar(100) NOT NULL,
+	`descriptionAr` text,
+	`descriptionEn` text,
+	`monthlyPriceSAR` decimal(10,2) NOT NULL DEFAULT '0',
+	`annualPriceSAR` decimal(10,2) NOT NULL DEFAULT '0',
+	`trialDays` int NOT NULL DEFAULT 0,
+	`maxPrograms` int NOT NULL DEFAULT 3,
+	`featuresAr` json DEFAULT ('[]'),
+	`featuresEn` json DEFAULT ('[]'),
+	`isFeaturedInListings` boolean NOT NULL DEFAULT false,
+	`sortOrder` int NOT NULL DEFAULT 0,
+	`isActive` boolean NOT NULL DEFAULT true,
+	`createdAt` timestamp NOT NULL DEFAULT (now()),
+	`updatedAt` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+	CONSTRAINT `subscription_plans_id` PRIMARY KEY(`id`),
+	CONSTRAINT `subscription_plans_slug_unique` UNIQUE(`slug`)
+);

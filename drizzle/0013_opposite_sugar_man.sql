@@ -1,0 +1,81 @@
+CREATE TABLE `marketers` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`code` varchar(20) NOT NULL,
+	`name_ar` varchar(255) NOT NULL,
+	`name_en` varchar(255),
+	`gender` enum('male','female') DEFAULT 'male',
+	`role` enum('marketer','employee') NOT NULL DEFAULT 'marketer',
+	`job_title` varchar(255),
+	`education` varchar(255),
+	`skills` json,
+	`phone` varchar(30),
+	`email` varchar(320),
+	`city` varchar(100),
+	`marital_status` enum('single','married','divorced','widowed') DEFAULT 'single',
+	`birth_date` varchar(20),
+	`join_date` varchar(20),
+	`is_active` boolean NOT NULL DEFAULT true,
+	`notes` text,
+	`created_at` bigint NOT NULL,
+	`updated_at` bigint NOT NULL,
+	CONSTRAINT `marketers_id` PRIMARY KEY(`id`),
+	CONSTRAINT `marketers_code_unique` UNIQUE(`code`)
+);
+--> statement-breakpoint
+CREATE TABLE `sales_customers` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`name_ar` varchar(255) NOT NULL,
+	`phone` varchar(30),
+	`email` varchar(320),
+	`city` varchar(100),
+	`notes` text,
+	`created_at` bigint NOT NULL,
+	`updated_at` bigint NOT NULL,
+	CONSTRAINT `sales_customers_id` PRIMARY KEY(`id`)
+);
+--> statement-breakpoint
+CREATE TABLE `sales_orders` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`order_number` int NOT NULL,
+	`order_date` varchar(20) NOT NULL,
+	`customer_id` int,
+	`customer_name` varchar(255),
+	`customer_phone` varchar(30),
+	`marketer_id` int,
+	`supplier_id` int,
+	`service` enum('umrah','visa','hotel','transport','hajj','tour','other') NOT NULL DEFAULT 'umrah',
+	`description` text,
+	`payment_method` enum('bank_sar','bank_egp','electronic','cash','settlement') NOT NULL DEFAULT 'cash',
+	`currency` enum('SAR','EGP','USD') NOT NULL DEFAULT 'SAR',
+	`cost_price` decimal(12,2) NOT NULL DEFAULT '0',
+	`marketer_commission` decimal(12,2) NOT NULL DEFAULT '0',
+	`platform_margin` decimal(12,2) NOT NULL DEFAULT '0',
+	`selling_price` decimal(12,2) NOT NULL DEFAULT '0',
+	`amount_paid` decimal(12,2) NOT NULL DEFAULT '0',
+	`status` enum('pending','approved','completed','cancelled') NOT NULL DEFAULT 'pending',
+	`notes` text,
+	`created_at` bigint NOT NULL,
+	`updated_at` bigint NOT NULL,
+	CONSTRAINT `sales_orders_id` PRIMARY KEY(`id`),
+	CONSTRAINT `sales_orders_order_number_unique` UNIQUE(`order_number`)
+);
+--> statement-breakpoint
+CREATE TABLE `suppliers` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`code` varchar(20) NOT NULL,
+	`name_ar` varchar(255) NOT NULL,
+	`name_en` varchar(255),
+	`type` enum('individual','company') NOT NULL DEFAULT 'individual',
+	`gender` enum('male','female') DEFAULT 'male',
+	`phone` varchar(30),
+	`email` varchar(320),
+	`city` varchar(100),
+	`country` varchar(100) DEFAULT 'Egypt',
+	`services` json,
+	`notes` text,
+	`is_active` boolean NOT NULL DEFAULT true,
+	`created_at` bigint NOT NULL,
+	`updated_at` bigint NOT NULL,
+	CONSTRAINT `suppliers_id` PRIMARY KEY(`id`),
+	CONSTRAINT `suppliers_code_unique` UNIQUE(`code`)
+);
