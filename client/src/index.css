@@ -1,0 +1,466 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  /* Brand color aliases */
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-dark: var(--gold-dark);
+  --color-teal-50: var(--teal-50);
+  --color-teal-100: var(--teal-100);
+  --color-teal-200: var(--teal-200);
+  --color-teal-300: var(--teal-300);
+  --color-teal-400: var(--teal-400);
+  --color-teal-500: var(--teal-500);
+  --color-teal-600: var(--teal-600);
+  --color-teal-700: var(--teal-700);
+  --color-teal-800: var(--teal-800);
+  --color-teal-900: var(--teal-900);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  /* Go Umrah Brand — exact logo colors: Dark Teal #1B5E52, Gold-Tan #C9A96E, Peach-Beige #F5EFE6 */
+  --primary: oklch(0.33 0.08 168);        /* #1B5E52 Dark Teal */
+  --primary-foreground: oklch(0.98 0.01 90);
+  --secondary: oklch(0.94 0.03 60);       /* Peach-Beige #F5EFE6 */
+  --secondary-foreground: oklch(0.28 0.06 60);
+  --accent: oklch(0.74 0.12 76);          /* Gold-Tan #C9A96E */
+  --accent-foreground: oklch(0.18 0.04 60);
+  --background: oklch(0.97 0.02 75);      /* Warm Peach-Beige background */
+  --foreground: oklch(0.18 0.04 168);     /* Deep Teal foreground */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.04 168);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.04 168);
+  --muted: oklch(0.93 0.02 75);
+  --muted-foreground: oklch(0.52 0.05 168);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.87 0.04 168);
+  --input: oklch(0.87 0.04 168);
+  --ring: oklch(0.33 0.08 168);
+  --radius: 0.75rem;
+  /* Brand Hex references: Teal=#1B5E52, Gold=#C9A96E, Peach=#F5EFE6 */
+  --brand-teal: #1B5E52;
+  --brand-gold: #C9A96E;
+  --brand-peach: #F5EFE6;
+  /* Gold shades */
+  --gold: oklch(0.74 0.12 76);            /* #C9A96E */
+  --gold-light: oklch(0.86 0.08 76);      /* lighter gold */
+  --gold-dark: oklch(0.60 0.16 72);       /* darker gold */
+  /* Teal shades derived from #1B5E52 */
+  --teal-50: oklch(0.96 0.02 168);
+  --teal-100: oklch(0.91 0.04 168);
+  --teal-200: oklch(0.82 0.07 168);
+  --teal-300: oklch(0.68 0.09 168);
+  --teal-400: oklch(0.54 0.09 168);
+  --teal-500: oklch(0.44 0.09 168);
+  --teal-600: oklch(0.38 0.09 168);
+  --teal-700: oklch(0.33 0.08 168);       /* primary teal */
+  --teal-800: oklch(0.24 0.07 168);
+  --teal-900: oklch(0.17 0.05 168);
+  /* Sidebar */
+  --sidebar: oklch(0.17 0.05 168);
+  --sidebar-foreground: oklch(0.92 0.03 168);
+  --sidebar-primary: oklch(0.74 0.12 76);
+  --sidebar-primary-foreground: oklch(0.18 0.04 60);
+  --sidebar-accent: oklch(0.25 0.07 168);
+  --sidebar-accent-foreground: oklch(0.95 0.02 168);
+  --sidebar-border: oklch(0.25 0.06 168);
+  --sidebar-ring: oklch(0.74 0.12 76);
+  /* Charts */
+  --chart-1: oklch(0.44 0.09 168);
+  --chart-2: oklch(0.74 0.12 76);
+  --chart-3: oklch(0.60 0.16 72);
+  --chart-4: oklch(0.33 0.08 168);
+  --chart-5: oklch(0.24 0.07 168);
+}
+
+/* Dark mode inherits same brand colors */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    /* Tajawal — خط عالمي وحيد لجميع العناصر */
+    font-family: 'Tajawal', system-ui, sans-serif !important;
+  }
+  html, body {
+    @apply bg-background text-foreground;
+    font-family: 'Tajawal', system-ui, sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    direction: rtl;
+    text-align: right;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Tajawal', system-ui, sans-serif !important;
+    line-height: 1.35;
+    letter-spacing: 0;
+    font-weight: 700;
+  }
+  p, span, a, li, td, th, label, input, textarea, select, button {
+    font-family: 'Tajawal', system-ui, sans-serif !important;
+  }
+  /* Arabic / RTL — Tajawal as sole font */
+  html[lang="ar"] body,
+  html[dir="rtl"] body {
+    font-family: 'Tajawal', system-ui, sans-serif !important;
+    direction: rtl;
+    text-align: right;
+  }
+  /* LTR languages — Tajawal works perfectly for Latin too */
+  html[lang="en"] body,
+  html[lang="fr"] body,
+  html[lang="tr"] body,
+  html[lang="id"] body {
+    font-family: 'Tajawal', system-ui, sans-serif !important;
+    direction: ltr;
+    text-align: left;
+  }
+  /* Urdu — RTL */
+  html[lang="ur"] body {
+    font-family: 'Tajawal', system-ui, sans-serif !important;
+    direction: rtl;
+    text-align: right;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  /* ═══════════════════════════════════════════════════════════
+     Islamic Khatam Pattern — Official Pattern for Go Umrah
+     Geometry: Concave 4-arc diamond + small 4-pointed star accents
+     No cross shapes. Transparent — overlays any background color.
+     Opacity kept very low so content always reads clearly.
+     ═══════════════════════════════════════════════════════════ */
+
+  /* Gold strokes — for dark teal sections (hero, CTA, footer, sidebar)
+     Uses ::before pseudo-element so opacity ONLY affects the pattern,
+     NOT child text/content. position:relative required on the element. */
+  .islamic-pattern {
+    position: relative;
+    isolation: isolate;
+  }
+  .islamic-pattern::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'><g fill='none' stroke='%23C9A96E' stroke-width='0.9'><path d='M 100,54 A 55.744,55.744 0 0,0 146,100 A 55.744,55.744 0 0,0 100,146 A 55.744,55.744 0 0,0 54,100 A 55.744,55.744 0 0,0 100,54 Z'/><path d='M 0,-46 A 55.744,55.744 0 0,0 46,0 A 55.744,55.744 0 0,0 0,46 A 55.744,55.744 0 0,0 -46,0 A 55.744,55.744 0 0,0 0,-46 Z'/><path d='M 200,-46 A 55.744,55.744 0 0,0 246,0 A 55.744,55.744 0 0,0 200,46 A 55.744,55.744 0 0,0 154,0 A 55.744,55.744 0 0,0 200,-46 Z'/><path d='M 0,154 A 55.744,55.744 0 0,0 46,200 A 55.744,55.744 0 0,0 0,246 A 55.744,55.744 0 0,0 -46,200 A 55.744,55.744 0 0,0 0,154 Z'/><path d='M 200,154 A 55.744,55.744 0 0,0 246,200 A 55.744,55.744 0 0,0 200,246 A 55.744,55.744 0 0,0 154,200 A 55.744,55.744 0 0,0 200,154 Z'/><path d='M 100,-7 L 107,0 L 100,7 L 93,0 Z'/><path d='M 100,193 L 107,200 L 100,207 L 93,200 Z'/><path d='M -7,100 L 0,107 L 7,100 L 0,93 Z'/><path d='M 193,100 L 200,107 L 207,100 L 200,93 Z'/><path d='M 50,43 L 57,50 L 50,57 L 43,50 Z'/><path d='M 150,43 L 157,50 L 150,57 L 143,50 Z'/><path d='M 50,143 L 57,150 L 50,157 L 43,150 Z'/><path d='M 150,143 L 157,150 L 150,157 L 143,150 Z'/></g></svg>");
+    background-size: 200px 200px;
+    background-repeat: repeat;
+    opacity: 0.10;
+  }
+  .islamic-pattern > * { position: relative; z-index: 1; }
+
+  /* Teal strokes — for light/cream sections */
+  .islamic-pattern-light {
+    position: relative;
+    isolation: isolate;
+  }
+  .islamic-pattern-light::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'><g fill='none' stroke='%231B5E52' stroke-width='0.8'><path d='M 100,54 A 55.744,55.744 0 0,0 146,100 A 55.744,55.744 0 0,0 100,146 A 55.744,55.744 0 0,0 54,100 A 55.744,55.744 0 0,0 100,54 Z'/><path d='M 0,-46 A 55.744,55.744 0 0,0 46,0 A 55.744,55.744 0 0,0 0,46 A 55.744,55.744 0 0,0 -46,0 A 55.744,55.744 0 0,0 0,-46 Z'/><path d='M 200,-46 A 55.744,55.744 0 0,0 246,0 A 55.744,55.744 0 0,0 200,46 A 55.744,55.744 0 0,0 154,0 A 55.744,55.744 0 0,0 200,-46 Z'/><path d='M 0,154 A 55.744,55.744 0 0,0 46,200 A 55.744,55.744 0 0,0 0,246 A 55.744,55.744 0 0,0 -46,200 A 55.744,55.744 0 0,0 0,154 Z'/><path d='M 200,154 A 55.744,55.744 0 0,0 246,200 A 55.744,55.744 0 0,0 200,246 A 55.744,55.744 0 0,0 154,200 A 55.744,55.744 0 0,0 200,154 Z'/><path d='M 100,-7 L 107,0 L 100,7 L 93,0 Z'/><path d='M 100,193 L 107,200 L 100,207 L 93,200 Z'/><path d='M -7,100 L 0,107 L 7,100 L 0,93 Z'/><path d='M 193,100 L 200,107 L 207,100 L 200,93 Z'/><path d='M 50,43 L 57,50 L 50,57 L 43,50 Z'/><path d='M 150,43 L 157,50 L 150,57 L 143,50 Z'/><path d='M 50,143 L 57,150 L 50,157 L 43,150 Z'/><path d='M 150,143 L 157,150 L 150,157 L 143,150 Z'/></g></svg>");
+    background-size: 200px 200px;
+    background-repeat: repeat;
+    opacity: 0.06;
+  }
+  .islamic-pattern-light > * { position: relative; z-index: 1; }
+  .gold-gradient { background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-light) 100%); }
+  .teal-gradient { background: linear-gradient(135deg, var(--teal-900) 0%, var(--teal-700) 50%, var(--teal-600) 100%); }
+  .luxury-card {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: 0 2px 16px -2px oklch(0.18 0.04 200 / 0.10);
+    border: 1px solid var(--border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+  }
+  .luxury-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px -4px oklch(0.35 0.09 195 / 0.18);
+  }
+  .badge-urgent {
+    background: linear-gradient(135deg, #dc2626, #ef4444);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    animation: pulse-badge 2s infinite;
+  }
+  .badge-featured {
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    color: oklch(0.18 0.04 60);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+  }
+  .amenity-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: var(--teal-50);
+    color: var(--teal-700);
+    border: 1px solid var(--teal-200);
+    border-radius: 9999px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .gold-divider {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold));
+    border-radius: 2px;
+    margin: 0.75rem 0;
+  }
+  /* Geometric pattern border strip — from logo bottom band */
+  .geometric-border-top {
+    position: relative;
+  }
+  .geometric-border-top::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 8px;
+    background-color: var(--brand-gold);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='8' viewBox='0 0 40 8'%3E%3Ccircle cx='4' cy='4' r='2.5' fill='none' stroke='%231B5E52' stroke-width='0.8'/%3E%3Ccircle cx='12' cy='4' r='2.5' fill='none' stroke='%231B5E52' stroke-width='0.8'/%3E%3Ccircle cx='20' cy='4' r='2.5' fill='none' stroke='%231B5E52' stroke-width='0.8'/%3E%3Ccircle cx='28' cy='4' r='2.5' fill='none' stroke='%231B5E52' stroke-width='0.8'/%3E%3Ccircle cx='36' cy='4' r='2.5' fill='none' stroke='%231B5E52' stroke-width='0.8'/%3E%3Cline x1='0' y1='4' x2='40' y2='4' stroke='%231B5E52' stroke-width='0.3' opacity='0.4'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-size: 40px 8px;
+  }
+  .geometric-border-bottom {
+    position: relative;
+  }
+  .geometric-border-bottom::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 8px;
+    background-color: var(--brand-gold);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='8' viewBox='0 0 40 8'%3E%3Ccircle cx='4' cy='4' r='2.5' fill='none' stroke='%231B5E52' stroke-width='0.8'/%3E%3Ccircle cx='12' cy='4' r='2.5' fill='none' stroke='%231B5E52' stroke-width='0.8'/%3E%3Ccircle cx='20' cy='4' r='2.5' fill='none' stroke='%231B5E52' stroke-width='0.8'/%3E%3Ccircle cx='28' cy='4' r='2.5' fill='none' stroke='%231B5E52' stroke-width='0.8'/%3E%3Ccircle cx='36' cy='4' r='2.5' fill='none' stroke='%231B5E52' stroke-width='0.8'/%3E%3Cline x1='0' y1='4' x2='40' y2='4' stroke='%231B5E52' stroke-width='0.3' opacity='0.4'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-size: 40px 8px;
+  }
+  /* Arabic font utilities — all use Tajawal */
+  .font-arabic {
+    font-family: 'Tajawal', system-ui, sans-serif !important;
+    direction: rtl;
+  }
+  .font-arabic-display {
+    font-family: 'Tajawal', system-ui, sans-serif !important;
+    direction: rtl;
+    line-height: 1.6;
+    font-weight: 700;
+  }
+  .font-arabic-heading {
+    font-family: 'Tajawal', system-ui, sans-serif !important;
+    direction: rtl;
+    font-weight: 800;
+    line-height: 1.4;
+  }
+  .font-arabic-quran {
+    font-family: 'Tajawal', system-ui, sans-serif !important;
+    direction: rtl;
+    font-size: 1.3em;
+    line-height: 2;
+    letter-spacing: 0.02em;
+  }
+  .font-amiri {
+    font-family: 'Tajawal', system-ui, sans-serif !important;
+  }
+  .font-scheherazade {
+    font-family: 'Tajawal', system-ui, sans-serif !important;
+  }
+  .font-reem-kufi {
+    font-family: 'Tajawal', system-ui, sans-serif !important;
+  }
+  /* RTL support */
+  [dir="rtl"] {
+    font-family: 'Tajawal', system-ui, sans-serif !important;
+  }
+  [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3 {
+    font-family: 'Tajawal', system-ui, sans-serif !important;
+    font-weight: 800;
+  }
+  [dir="rtl"] .bismillah,
+  .bismillah {
+    font-family: 'Tajawal', system-ui, sans-serif !important;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 2;
+    direction: rtl;
+    text-align: center;
+    color: var(--gold);
+    text-shadow: 0 1px 4px oklch(0.18 0.04 60 / 0.25);
+  }
+  @keyframes pulse-badge {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.75; }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  .shimmer {
+    background: linear-gradient(90deg, var(--muted) 25%, var(--border) 50%, var(--muted) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  /* ── Card Shimmer Sweep (hover light sweep right-to-left) ── */
+  @keyframes card-shimmer-sweep {
+    0%   { transform: translateX(150%) skewX(-18deg); opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { transform: translateX(-150%) skewX(-18deg); opacity: 0; }
+  }
+  .card-shimmer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    border-radius: inherit;
+    z-index: 20;
+  }
+  .card-shimmer::after {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: 0;
+    width: 45%;
+    height: 140%;
+    background: linear-gradient(
+      105deg,
+      transparent 20%,
+      rgba(255, 255, 255, 0.07) 40%,
+      rgba(255, 255, 255, 0.18) 50%,
+      rgba(255, 255, 255, 0.07) 60%,
+      transparent 80%
+    );
+    transform: translateX(150%) skewX(-18deg);
+    opacity: 0;
+    transition: none;
+  }
+  .group:hover .card-shimmer::after {
+    animation: card-shimmer-sweep 0.75s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  /**
+   * Custom container utility that centers content and adds responsive padding.
+   */
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* 16px - mobile padding */
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem; /* 24px - tablet padding */
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem; /* 32px - desktop padding */
+      padding-right: 2rem;
+      max-width: 1280px; /* Standard content width */
+    }
+  }
+}
+/* ── Testimonials Marquee ─────────────────────────── */
+@keyframes goUmrahMarquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes goUmrahMarqueeLTR {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(50%); }
+}
+
+.go-marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.go-marquee-track {
+  display: inline-flex !important;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  min-width: unset !important;
+  min-height: unset !important;
+  animation: goUmrahMarqueeLTR var(--marquee-duration, 120s) linear infinite;
+}
+
+.go-marquee-track.paused,
+.go-marquee-wrapper:hover .go-marquee-track {
+  animation-play-state: paused;
+}
